@@ -1,0 +1,101 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QueenBot Session Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #0f0f0f;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #e91e63;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      color: #bbb;
+      margin-bottom: 2rem;
+      text-align: center;
+      max-width: 500px;
+    }
+    .form-container {
+      background: #1c1c1c;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(233, 30, 99, 0.3);
+      width: 100%;
+      max-width: 400px;
+    }
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      background: #2e2e2e;
+      color: #fff;
+      font-size: 1rem;
+    }
+    button {
+      background: #e91e63;
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 1rem;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #d81b60;
+    }
+    .result {
+      margin-top: 1rem;
+      background: #222;
+      padding: 1rem;
+      border-radius: 10px;
+      word-break: break-all;
+      color: #e1e1e1;
+    }
+  </style>
+</head>
+<body>
+  <h1>QueenBot Generator</h1>
+  <p>Login dan dapatkan session string kamu untuk ubot QueenBot tanpa perlu share OTP ke siapa pun.</p>  <div class="form-container">
+    <input type="text" id="apiKey" placeholder="Masukkan API ID kamu..." />
+    <input type="text" id="apiHash" placeholder="Masukkan API Hash kamu..." />
+    <button onclick="generateSession()">Generate Session</button>
+    <div class="result" id="result"></div>
+  </div>  <script>
+    function generateSession() {
+      const apiKey = document.getElementById('apiKey').value.trim();
+      const apiHash = document.getElementById('apiHash').value.trim();
+      const result = document.getElementById('result');
+
+      if (!apiKey || !apiHash) {
+        result.textContent = 'Harap isi semua data!';
+        return;
+      }
+
+      result.textContent = 'Menghubungkan ke server...';
+
+      // Simulasi request
+      setTimeout(() => {
+        result.textContent = `Session string untuk API ${apiKey}:\nQUEEN_SESSION_${btoa(apiKey + ':' + apiHash)}`;
+      }, 2000);
+    }
+  </script></body>
+</html>
